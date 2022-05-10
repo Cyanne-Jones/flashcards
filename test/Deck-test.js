@@ -30,6 +30,6 @@ describe('Deck', () => {
 
         const deck = new Deck([card1, card2, card3]);
 
-        expect(deck.countCards()).to.be.equal.to(deck.cards.length);
+        expect(deck.countCards()).to.equal(3);
       });
 });
