@@ -1,3 +1,5 @@
+const Turn = require("./Turn");
+
 class Round {
     constructor(deck) {
         this.deck = deck;
@@ -8,8 +10,9 @@ class Round {
         return this.deck[0];
     };
 
-    takeTurn() {
-
+    takeTurn(guess) {
+        const turn = new Turn(guess, this.returnCurrentCard());
+        this.turns ++;
     };
 };
 
