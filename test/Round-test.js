@@ -38,6 +38,10 @@ describe ('Round', () => {
 
     it('Should have a turn property that begins at 0', () => {
         expect(round.turns).to.equal(0);
-    })
+    });
+
+    it('Should have an incorectGuesses array that is empty by default', () => {
+        expect(round.incorrectGuesses).to.equal([])
+    });
 
 });
