@@ -44,7 +44,7 @@ describe ('Round', () => {
         expect(round.incorrectGuesses).to.deep.equal([]);
     });
 
-    it('Should have a method returnCurrentCard that returns the current card object' () => {
+    it('Should have a method returnCurrentCard that returns the current card object', () => {
         expect(round.returnCurrentCard()).to.equal(round.deck[0]);
     });
 });
