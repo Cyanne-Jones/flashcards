@@ -101,4 +101,12 @@ describe ('Round', () => {
 
         expect(round.calculatePercentageCorrect()).to.equal(67);
     });
+
+    it('Should have a endRound method that returns an end of game string', () => {
+        round.takeTurn(1876);
+        round.takeTurn('John Evans');
+        round.takeTurn('Mount Elbert');
+
+        expect(round.endRound()).to.equal('** Round over! ** You answered 67% of the questions correctly!');
+    });
 });
