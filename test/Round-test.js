@@ -76,7 +76,7 @@ describe ('Round', () => {
         round.takeTurn('John Evans');
         expect(round.deck[0].id).to.equal(3);
     });
-    
+
     it('Should store the incorrect user guesses to the incorrectGuesses array via their id number', () => {
         round.takeTurn(1976);
 
@@ -94,4 +94,11 @@ describe ('Round', () => {
         expect(round.incorrectGuesses).to.deep.equal([1,2,3]);
     });
 
+    it('Should have a calculatePercentageCorrect method that returns the the percent of questions the user got correct as a number', () => {
+        round.takeTurn(1876);
+        round.takeTurn('John Evans');
+        round.takeTurn('Mount Elbert');
+
+        expect(round.calculatePercentageCorrect()).to.equal(67);
+    });
 });
