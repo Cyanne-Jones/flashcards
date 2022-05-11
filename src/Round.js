@@ -8,13 +8,16 @@ class Round {
         this.incorrectGuesses = [];
     }
     returnCurrentCard() {
-        return this.deck.cards[0];
+        return this.deck[0];
     };
 
     takeTurn(guess) {
         this.turns ++;
         const turn = new Turn(guess, this.returnCurrentCard());
-        this.deck.cards.push(this.deck.cards.shift());
+        if (!turn.evaluateGuess()) {
+            this.incorrectGuesses.push(this.returnCurrentCard().id);
+        };
+        this.deck.push(this.deck.shift());
         return turn.giveFeedback();
     };
 };

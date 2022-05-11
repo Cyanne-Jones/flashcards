@@ -29,11 +29,11 @@ describe ('Round', () => {
         card3 = new Card(3, 'What is Colorado\'s highest peak?', ['Pike\'s Peak', 'Mount Evans', 'Mount Elbert'], 'Mount Elbert');
 
         deck = new Deck([card1, card2, card3]);
-        round = new Round(deck);
+        round = new Round(deck.cards);
     });
     
     it('Should store a deck of cards', () => {
-        expect(round.deck).to.equal(deck);
+        expect(round.deck).to.equal(deck.cards);
     });
 
     it('Should have a turn property that begins at 0', () => {
@@ -45,7 +45,7 @@ describe ('Round', () => {
     });
 
     it('Should have a method returnCurrentCard that returns the current card object', () => {
-        expect(round.returnCurrentCard()).to.equal(round.deck.cards[0]);
+        expect(round.returnCurrentCard()).to.equal(round.deck[0]);
     });
 
     it('Should have a takeTurn method', () => {
@@ -68,18 +68,30 @@ describe ('Round', () => {
     });
 
     it('Should make the next card in the deck the current card after the turn is taken', () => {
-        expect(round.deck.cards[0].id).to.equal(1);
+        expect(round.deck[0].id).to.equal(1);
         round.takeTurn(1876);
 
-        expect(round.deck.cards[0].id).to.equal(2);
+        expect(round.deck[0].id).to.equal(2);
 
         round.takeTurn('John Evans');
-        expect(round.deck.cards[0].id).to.equal(3);
+        expect(round.deck[0].id).to.equal(3);
     });
+    
     it('Should store the incorrect user guesses to the incorrectGuesses array via their id number', () => {
         round.takeTurn(1976);
 
         expect(round.incorrectGuesses.length).to.equal(1);
-        expect(round.incorrectGuesses).to.deep.equal(1);
+        expect(round.incorrectGuesses).to.deep.equal([1]);
+
+        round.takeTurn('John Evans');
+
+        expect(round.incorrectGuesses.length).to.equal(2);
+        expect(round.incorrectGuesses).to.deep.equal([1,2]);
+
+        round.takeTurn('Mount Evans');
+
+        expect(round.incorrectGuesses.length).to.equal(3);
+        expect(round.incorrectGuesses).to.deep.equal([1,2,3]);
     });
+
 });
