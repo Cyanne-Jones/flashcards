@@ -13,28 +13,28 @@ describe ('Round', () => {
     let deck;
     let round;
 
-    it('Should be a function', () => {
-        const round = new Round();
-        expect(Round).to.be.a('function');
-    });
-
-    it('should be an instance of Round', () => {
-        const round = new Round();
-        expect(round).to.be.an.instanceof(Round);
-      }); 
-
     beforeEach(() => {
         card1 = new Card(1, 'When was Colorado given its statehood?', [1876, 1976, 1865], 1876);
         card2 = new Card(2, 'Who was Colorado\'s first Governor (as a state, not a territory)?', ['John Evans', 'John Long Routt', 'William Gilpin'], 'John Long Routt');
         card3 = new Card(3, 'What is Colorado\'s highest peak?', ['Pike\'s Peak', 'Mount Evans', 'Mount Elbert'], 'Mount Elbert');
 
         deck = new Deck([card1, card2, card3]);
-        round = new Round(deck.cards);
+        round = new Round(deck);
     });
     
     it('Should store a deck of cards', () => {
         expect(round.deck).to.equal(deck.cards);
     });
+
+    it('Should be a function', () => {
+        expect(Round).to.be.a('function');
+    });
+
+    it('should be an instance of Round', () => {
+        expect(round).to.be.an.instanceof(Round);
+      }); 
+
+
 
     it('Should have a turn property that begins at 0', () => {
         expect(round.turns).to.equal(0);
