@@ -45,7 +45,7 @@ describe ('Round', () => {
     });
 
     it('Should have a method returnCurrentCard that returns the current card object', () => {
-        expect(round.returnCurrentCard()).to.equal(round.deck[0]);
+        expect(round.returnCurrentCard()).to.equal(round.deck.cards[0]);
     });
 
     it('Should have a takeTurn method', () => {
@@ -54,8 +54,18 @@ describe ('Round', () => {
 
     it('Should keep track of how many turns are taken', () => {
 
-        round.takeTurn();
-
+        round.takeTurn(1876);
         expect(round.turns).to.equal(1);
+
+        round.takeTurn(1976);
+        round.takeTurn(1865);
+        expect(round.turns).to.equal(3);
     });
+
+    it('Should evaluate if the user\'s guess is correct', () => {
+        expect(round.takeTurn(1876)).to.equal('correct!');
+        expect(round.takeTurn(1976)).to.equal('incorrect!');
+    });
+
+    
 });
