@@ -6,7 +6,11 @@ class Round {
     }
     returnCurrentCard() {
         return this.deck[0];
-    }
+    };
+
+    takeTurn() {
+
+    };
 };
 
 module.exports = Round;
