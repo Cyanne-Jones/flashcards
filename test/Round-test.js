@@ -41,7 +41,6 @@ describe ('Round', () => {
     });
 
     it('Should have an incorectGuesses array that is empty by default', () => {
-        expect(round.incorrectGuesses).to.equal([])
+        expect(round.incorrectGuesses).to.deep.equal([])
     });
-
 });
