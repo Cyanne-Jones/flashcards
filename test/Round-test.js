@@ -76,10 +76,10 @@ describe ('Round', () => {
         round.takeTurn('John Evans');
         expect(round.deck.cards[0].id).to.equal(3);
     });
-    // it('Should store the incorrect user guesses to the incorrectGuesses array via their id number', () => {
-    //     round.takeTurn(1976);
+    it('Should store the incorrect user guesses to the incorrectGuesses array via their id number', () => {
+        round.takeTurn(1976);
 
-    //     expect(round.incorrectGuesses.length).to.equal(1);
-    //     expect(round.incorrectGuesses).to.deep.equal(1);
-    // });
+        expect(round.incorrectGuesses.length).to.equal(1);
+        expect(round.incorrectGuesses).to.deep.equal(1);
+    });
 });
