@@ -68,9 +68,13 @@ describe ('Round', () => {
     });
 
     it('Should make the next card in the deck the current card after the turn is taken', () => {
+        expect(round.deck.cards[0].id).to.equal(1);
         round.takeTurn(1876);
 
         expect(round.deck.cards[0].id).to.equal(2);
+
+        round.takeTurn('John Evans');
+        expect(round.deck.cards[0].id).to.equal(3);
     });
     // it('Should store the incorrect user guesses to the incorrectGuesses array via their id number', () => {
     //     round.takeTurn(1976);
