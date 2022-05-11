@@ -41,6 +41,10 @@ describe ('Round', () => {
     });
 
     it('Should have an incorectGuesses array that is empty by default', () => {
-        expect(round.incorrectGuesses).to.deep.equal([])
+        expect(round.incorrectGuesses).to.deep.equal([]);
+    });
+
+    it('Should have a method returnCurrentCard that returns the current card object' () => {
+        expect(round.returnCurrentCard()).to.equal(round.deck[0]);
     });
 });
