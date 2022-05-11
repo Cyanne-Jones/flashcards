@@ -47,4 +47,15 @@ describe ('Round', () => {
     it('Should have a method returnCurrentCard that returns the current card object', () => {
         expect(round.returnCurrentCard()).to.equal(round.deck[0]);
     });
+
+    it('Should have a takeTurn method', () => {
+        expect(round.takeTurn).to.be.a('function');
+    });
+
+    it('Should keep track of how many turns are taken', () => {
+
+        round.takeTurn();
+
+        expect(round.turns).to.equal(1);
+    });
 });
