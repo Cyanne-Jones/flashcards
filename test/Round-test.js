@@ -2,7 +2,6 @@ const chai = require('chai');
 const expect = chai.expect;
 const Card = require('../src/Card');
 const Deck = require('../src/Deck');
-const Turn = require('../src/Turn');
 const Round = require('../src/Round');
 
 describe ('Round', () => {
@@ -17,7 +16,6 @@ describe ('Round', () => {
         card1 = new Card(1, 'When was Colorado given its statehood?', [1876, 1976, 1865], 1876);
         card2 = new Card(2, 'Who was Colorado\'s first Governor (as a state, not a territory)?', ['John Evans', 'John Long Routt', 'William Gilpin'], 'John Long Routt');
         card3 = new Card(3, 'What is Colorado\'s highest peak?', ['Pike\'s Peak', 'Mount Evans', 'Mount Elbert'], 'Mount Elbert');
-
         deck = new Deck([card1, card2, card3]);
         round = new Round(deck);
     });
@@ -32,9 +30,7 @@ describe ('Round', () => {
 
     it('should be an instance of Round', () => {
         expect(round).to.be.an.instanceof(Round);
-      }); 
-
-
+     }); 
 
     it('Should have a turn property that begins at 0', () => {
         expect(round.turns).to.equal(0);
@@ -68,28 +64,25 @@ describe ('Round', () => {
     });
 
     it('Should make the next card in the deck the current card after the turn is taken', () => {
-        expect(round.deck[0].id).to.equal(1);
+        expect([round.returnCurrentCard()][0].id).to.equal(1);
+        
         round.takeTurn(1876);
-
-        expect(round.deck[0].id).to.equal(2);
+        expect([round.returnCurrentCard()][0].id).to.equal(2);
 
         round.takeTurn('John Evans');
-        expect(round.deck[0].id).to.equal(3);
+        expect([round.returnCurrentCard()][0].id).to.equal(3);
     });
 
     it('Should store the incorrect user guesses to the incorrectGuesses array via their id number', () => {
         round.takeTurn(1976);
-
         expect(round.incorrectGuesses.length).to.equal(1);
         expect(round.incorrectGuesses).to.deep.equal([1]);
 
         round.takeTurn('John Evans');
-
         expect(round.incorrectGuesses.length).to.equal(2);
         expect(round.incorrectGuesses).to.deep.equal([1,2]);
 
         round.takeTurn('Mount Evans');
-
         expect(round.incorrectGuesses.length).to.equal(3);
         expect(round.incorrectGuesses).to.deep.equal([1,2,3]);
     });
@@ -98,8 +91,6 @@ describe ('Round', () => {
         round.takeTurn(1876);
         round.takeTurn('John Evans');
         round.takeTurn('Mount Elbert');
-
         expect(round.calculatePercentageCorrect()).to.equal(67);
     });
-
 });

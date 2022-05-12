@@ -22,11 +22,9 @@ class Game {
     const deck = new Deck(prototypeQuestions);
     const round = new Round(deck);
     this.currentRound = round;
-
     this.printMessage(deck, round);
     this.printQuestion(round);
   }; 
-
 };
 
 module.exports = Game;
