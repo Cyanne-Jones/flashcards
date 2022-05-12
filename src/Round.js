@@ -9,16 +9,15 @@ class Round {
         this.incorrectGuesses = [];
     }
     returnCurrentCard() {
-        return this.deck[0];
+        return this.deck[this.turns];
     };
 
     takeTurn(guess) {
-        this.turns ++;
         const turn = new Turn(guess, this.returnCurrentCard());
+        this.turns ++;
         if (!turn.evaluateGuess()) {
             this.incorrectGuesses.push(this.returnCurrentCard().id);
         };
-        this.deck.push(this.deck.shift());
         return turn.giveFeedback();
     };
     
@@ -27,7 +26,7 @@ class Round {
     };
 
     endRound() {
-       return `** Round over! ** You answered ${this.calculatePercentageCorrect()}% of the questions correctly!`;
+       console.log(`** Round over! ** You answered ${this.calculatePercentageCorrect()}% of the questions correctly!`);
     }
 };
 
