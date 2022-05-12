@@ -20,15 +20,15 @@ describe('Deck', () => {
         expect(Deck).to.be.a('function');
     });
 
-    it('should be an instance of deck', () => {
+    it('Should be an instance of deck', () => {
         expect(deck).to.be.an.instanceof(Deck);
     }); 
     
     it('Should be initialized with and store an array of Card objects', () => {
         expect(deck.cards.every(card => card instanceof Card)).to.equal(true);
     });
-    
-      it('Should be able to count how many cards are in the deck', () => {
+
+    it('Should be able to count how many cards are in the deck', () => {
         expect(deck.countCards()).to.equal(3);
     });
 });
