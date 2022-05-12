@@ -5,7 +5,7 @@ A fun trivia game you can play *directly from your terminal!* No PS5 needed!
 This game was assigned as a Turing Mod 2 Solo Project and was written by [Cyanne Jones](https://github.com/Cyanne-Jones)
 
 
-## Setup
+## Setup and Gamelay Instructions
 
 Clone down the repo from GitHub to your local machine. Cd into the new local repo and run the console command:
 ```bash
