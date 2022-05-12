@@ -45,7 +45,7 @@ describe ('Round', () => {
     });
 
     it('Should have a method returnCurrentCard that returns the current card object', () => {
-        expect(round.returnCurrentCard()).to.equal(round.deck[0]);
+        expect(round.returnCurrentCard()).to.equal(round.deck[round.turns]);
     });
 
     it('Should have a takeTurn method', () => {
@@ -53,7 +53,7 @@ describe ('Round', () => {
     });
 
     it('Should keep track of how many turns are taken', () => {
-
+        expect(round.turns).to.equal(0);
         round.takeTurn(1876);
         expect(round.turns).to.equal(1);
 
@@ -102,11 +102,4 @@ describe ('Round', () => {
         expect(round.calculatePercentageCorrect()).to.equal(67);
     });
 
-    it('Should have a endRound method that returns an end of game string', () => {
-        round.takeTurn(1876);
-        round.takeTurn('John Evans');
-        round.takeTurn('Mount Elbert');
-
-        expect(round.endRound()).to.equal('** Round over! ** You answered 67% of the questions correctly!');
-    });
 });
